@@ -18,7 +18,7 @@ def get_random_status(notification_id):
     time.sleep(5)
     return {
         "notification_id": notification_id,
-        "status": bool(random.randint(0, 3)),
+        "status":False,
     }
 
 
@@ -36,7 +36,7 @@ def status_callback(task):
 @api_view(['POST'])
 def set_status(request):
     if "notification_id" in request.data.keys():
-        transportation_id = request.data["transportation_id"]
+        notification_id = request.data["notification_id"]
 
         task = executor.submit(get_random_status, notification_id)
         task.add_done_callback(status_callback)
