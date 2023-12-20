@@ -18,7 +18,7 @@ def get_random_status(notification_id):
     time.sleep(5)
     return {
         "notification_id": notification_id,
-        "status":False,
+        "status":bool(random.randint(0, 3)),
     }
 
 
